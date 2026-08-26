@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMMORTAL | Streetwear</title>
+    <style>
+        /* --- Base Setup --- */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap');
+
+        :root {
+            --bg-color: #050505;
+            --text-color: #f0f0f0;
+            --accent-color: #d91616; /* Deep Red */
+            --border-color: #333;
+            --card-bg: #111;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            border-radius: 0 !important; /* Strict sharp edges */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(5, 5, 5, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 5%;
+            background: linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.9)), url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&q=80') center/cover;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 500px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--text-color);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        /* --- Lineup / Product Section --- */
+        .lineup {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        /* Slider Controls */
+        .slider-controls {
+            display: none; /* Hidden on mobile */
+            gap: 1rem;
+        }
+
+        .slider-btn {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .slider-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* Product Carousel */
+        .product-carousel {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding-bottom: 2rem;
+            /* Hide Scrollbar */
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+        }
+
+        .product-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .product-card {
+            min-width: 85vw; /* Mobile width */
+            scroll-snap-align: start;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .product-img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background-color: #222;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* --- Contact Section --- */
+        .contact {
+            padding: 6rem 5%;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 900;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--accent-color);
+            border: none;
+            color: white;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #b31212;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Responsive Design --- */
+        @media (min-width: 768px) {
+            .slider-controls {
+                display: flex;
+            }
+            .product-card {
+                min-width: calc(50% - 1rem);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .product-card {
+                min-width: calc(33.333% - 1.33rem);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">IMMORTAL<span>.</span></div>
+        <div class="nav-links">
+            <a href="#lineup">Lineup</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Eternal<br>Culture</h1>
+        <p>Premium streetwear built for the modern grid. No noise, just pure form and function.</p>
+        <a href="#lineup" class="btn">Explore the Collection</a>
+    </header>
+
+    <!-- Products / Lineup Section -->
+    <section id="lineup" class="lineup">
+        <div class="section-header">
+            <h2>Meet Our Lineup</h2>
+            <!-- Arrows visible on tablet/desktop -->
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevBtn">&#8592;</button>
+                <button class="slider-btn" id="nextBtn">&#8594;</button>
+            </div>
+        </div>
+
+        <div class="product-carousel" id="carousel">
+            <!-- Item 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=600" alt="Heavyweight Hoodie" class="product-img">
+                <div class="product-info">
+                    <div class="product-title">Void Hoodie</div>
+                    <div class="product-price">$120.00</div>
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&q=80&w=600" alt="Graphic Tee" class="product-img">
+                <div class="product-info">
+                    <div class="product-title">Phantom Tee</div>
+                    <div class="product-price">$45.00</div>
+                </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1622445275463-afa2ab738c34?auto=format&fit=crop&q=80&w=600" alt="Cargo Pants" class="product-img">
+                <div class="product-info">
+                    <div class="product-title">Utility Cargo</div>
+                    <div class="product-price">$140.00</div>
+                </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=600" alt="Bomber Jacket" class="product-img">
+                <div class="product-info">
+                    <div class="product-title">Crux Bomber</div>
+                    <div class="product-price">$185.00</div>
+                </div>
+            </div>
+            <!-- Item 5 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=600" alt="Beanie" class="product-img">
+                <div class="product-info">
+                    <div class="product-title">Monolith Beanie</div>
+                    <div class="product-price">$30.00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2>Reach Out</h2>
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
+                <div class="form-group">
+                    <input type="text" placeholder="FULL NAME" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="EMAIL ADDRESS" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="YOUR MESSAGE" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Transmission</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 IMMORTAL. All rights reserved.
+    </footer>
+
+    <!-- JavaScript for Desktop Slider Controls -->
+    <script>
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        // Scroll amount is calculated based on the width of a single card + the gap
+        const scrollAmount = () => {
+            const card = carousel.querySelector('.product-card');
+            // get gap size from computed style
+            const gap = parseFloat(window.getComputedStyle(carousel).gap) || 0;
+            return card.offsetWidth + gap;
+        };
+
+        nextBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
