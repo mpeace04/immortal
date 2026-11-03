@@ -81,12 +81,6 @@ button,input,textarea,select{font:inherit}
 }
 .intro.done{opacity:0;visibility:hidden;pointer-events:none}
 .intro__inner{width:min(100%, 520px);text-align:center;position:relative}
-.intro__inner::before,.intro__inner::after{
-  content:"";position:absolute;left:50%;transform:translateX(-50%);
-  width:76px;height:14px;background:var(--pattern) center/cover no-repeat;opacity:.9;
-}
-.intro__inner::before{top:-28px}
-.intro__inner::after{bottom:-28px}
 .eyebrow{font:400 .68rem/1 var(--sans);letter-spacing:.38em;text-transform:uppercase;color:#877153}
 .intro__title{font-family:var(--script);font-size:clamp(2.5rem,8vw,3.7rem);line-height:1.02;color:var(--green-dk);margin:.45rem 0 .2rem}
 .intro__subtitle{font:400 .65rem/1.6 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:#8e7b60}
@@ -160,7 +154,6 @@ main{position:relative;z-index:2}
 .section{padding:clamp(3.5rem,8vw,5.4rem) 0}
 .section--tint{background:var(--beige)}
 .section__title{margin:0;text-align:center;color:var(--green-dk);font:400 clamp(2rem,5vw,3rem)/1.18 var(--serif)}
-.section__title::after{content:"";display:block;width:96px;height:14px;margin:1rem auto 0;background:var(--pattern) center/contain no-repeat}
 .micro{display:block;text-align:center;color:var(--gold);font:400 .64rem/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;margin-bottom:.85rem}
 .card{background:var(--paper);padding:clamp(2.2rem,5vw,3.6rem);box-shadow:0 0 0 1px var(--line), 0 22px 56px -36px rgba(71,54,27,.38);position:relative}
 .card::before{content:"";position:absolute;inset:12px;border:1px solid rgba(175,132,69,.2);pointer-events:none}
@@ -200,7 +193,6 @@ main{position:relative;z-index:2}
 .heritage{background:linear-gradient(180deg,#213b30,#1d342a);color:#f7efe0;position:relative;overflow:hidden}
 .heritage::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.03),transparent 18%,transparent 82%,rgba(255,255,255,.03)), var(--pattern) center/90px 90px repeat;opacity:.08}
 .heritage .section__title{color:#f7efe0}
-.heritage .section__title::after{filter:saturate(.88) brightness(1.12)}
 .heritage-shell{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1.8rem,4vw,3rem);align-items:center;margin-top:2.4rem}
 .heritage-copy p{font-size:1.08rem;line-height:1.85;color:rgba(255,250,241,.78);max-width:29rem}
 .heritage-gallery{position:relative;min-height:440px}
@@ -214,11 +206,9 @@ main{position:relative;z-index:2}
 
 .stay-grid{display:grid;gap:1.1rem;margin-top:2.4rem}
 .hotel{display:grid;gap:.8rem;justify-items:center;background:var(--paper);padding:1.8rem 1.4rem;box-shadow:0 0 0 1px var(--line), 0 18px 40px -34px rgba(72,52,23,.35);position:relative;overflow:hidden}
-.hotel::before{content:"";position:absolute;top:0;left:0;right:0;height:10px;background:var(--pattern) center/80px 80px repeat-x}
 .hotel__name{font:500 clamp(1.55rem,4vw,2rem)/1.1 var(--serif);color:var(--green-dk);margin:.35rem 0 0}
 .hotel__addr{text-align:center;color:var(--muted);font-style:italic;line-height:1.6}
 .quote{position:relative;margin-top:2.2rem;background:var(--paper);padding:2.3rem 1.5rem;box-shadow:0 0 0 1px var(--line);text-align:center;font-size:clamp(1.06rem,2.3vw,1.18rem);line-height:1.9;font-style:italic;color:#433d32}
-.quote::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;background:var(--pattern) center/84px 84px repeat-x;opacity:.85}
 .gift{margin-top:2.2rem;background:var(--paper);padding:2rem 1.5rem;box-shadow:0 0 0 1px var(--line), 0 22px 46px -34px rgba(72,52,23,.38)}
 .gift__title{text-align:center;color:var(--green-dk);font:400 clamp(1.6rem,5vw,2rem)/1.1 var(--script)}
 .gift__label{text-align:center;color:var(--gold);font:400 .68rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;margin-top:.55rem}
@@ -247,7 +237,6 @@ main{position:relative;z-index:2}
 .faq details[open] summary{background:rgba(175,132,69,.06)}
 .answer{padding:0 1.25rem 1.3rem;color:var(--muted);line-height:1.78}
 .rsvp-card{position:relative;margin-top:2.35rem;background:var(--paper);padding:2.25rem 1.35rem;text-align:center;box-shadow:0 0 0 1px rgba(176,138,71,.28), 0 20px 48px -32px rgba(72,52,23,.42)}
-.rsvp-card::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;background:var(--pattern) center/86px 86px repeat-x}
 .rsvp-card__lead{max-width:26rem;margin:1.4rem auto 0;color:var(--muted);font-style:italic;line-height:1.75}
 .go-back{display:inline-block;margin-top:1.8rem;color:var(--green);font:400 .66rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(49,74,58,.35);padding-bottom:.35rem}
 .footer{background:#1d3227;color:rgba(250,247,241,.82);text-align:center;position:relative;padding:3.2rem 1.35rem calc(4rem + env(safe-area-inset-bottom))}
@@ -543,7 +532,7 @@ main{position:relative;z-index:2}
   </footer>
 </main>
 
-<audio id="song" loop preload="none"></audio>
+<audio id="song" loop preload="auto"></audio>
 <div class="player" id="player" hidden>
   <button class="player__btn" id="playerBtn" type="button" aria-pressed="false" aria-label="Play our song">
     <span class="player__eq" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -554,7 +543,7 @@ main{position:relative;z-index:2}
 <script>
 (function(){
   'use strict';
-  const SONG = 'assets/song.mp3';
+  const SONG = '17.mp3';
   const $ = (s)=>document.querySelector(s);
   const $$ = (s)=>[...document.querySelectorAll(s)];
   const intro = $('#intro'), env = $('#env'), scene = $('#scene');
